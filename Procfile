@@ -1,0 +1,1 @@
+web: npm install & concurrently -n 'Server,Client' -c 'red,green' \"nodemon server.js\" \"npm run client\"
