@@ -46,6 +46,12 @@ app.use(express.urlencoded({extended: false}));
 app.use(morgan('tiny'))
 app.use ('/api',router)
 
+//step 3
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('bakery-owner-client/build'));
+}
+
 
 app.listen (PORT,console.log(`Server is running on port ${PORT}...`));
 
