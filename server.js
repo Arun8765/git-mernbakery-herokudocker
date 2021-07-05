@@ -11,7 +11,7 @@ const router = require ('./routes/api')
 
 // const MONGODB_URI= "mongodb+srv://arun-bakery:arunjoshua@cluster0.xenge.mongodb.net/bakery_db?retryWrites=true&w=majority";
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/bakery_db',{
+mongoose.connect(process.env.MONGODB_URI ,{
   useNewUrlParser:true,
   useUnifiedTopology:true
 });
@@ -50,6 +50,11 @@ app.use ('/api',router)
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('bakery-owner-client/build'));
+
+    app.get("*",(req,res)=>{
+      res.sendFile(path.resolve(__dirname,"bakery-owner-client","build","index.html"))
+  })
+
 }
 
 
