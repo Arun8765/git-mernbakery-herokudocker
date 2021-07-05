@@ -4,6 +4,9 @@
   "main": "database.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"cd bakery-owner-client && npm run build",
+    "install-client":"cd bakery-owner-client && npm install",
+    "heroku-postbuild":"npm run install-client && npm run build",
     "start": "node server.js",
     "client": "cd bakery-owner-client && npm start",
     "dev": "concurrently -n 'Server,Client' -c 'red,green' \"nodemon server.js\" \"npm run client\""
